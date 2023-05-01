@@ -5,8 +5,10 @@ import Avatar from "../Avatar";
 import { useCallback, useState } from "react";
 
 import MenuItem from "./MenuItem";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 const UserMenu = () => {
+  const registerModal = useRegisterModal();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = useCallback(() => {
@@ -17,8 +19,8 @@ const UserMenu = () => {
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          //   onClick={() => {}}
-          className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
+          onClick={() => {}}
+          className="hidden px-4 py-3 text-sm font-semibold transition rounded-full cursor-pointer md:block hover:bg-neutral-100"
         >
           Airbnb your home
         </div>
@@ -37,7 +39,10 @@ const UserMenu = () => {
           <div className="flex flex-col cursor-pointer">
             <>
               <MenuItem onClick={() => {}} label="Login"></MenuItem>
-              <MenuItem onClick={() => {}} label="Sign up"></MenuItem>
+              <MenuItem
+                onClick={registerModal.onOpen}
+                label="Sign up"
+              ></MenuItem>
             </>
           </div>
         </div>
